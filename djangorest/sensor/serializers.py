@@ -32,3 +32,16 @@ class SensorValueSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SensorValue
         fields = ["timestamp", "value", "sensor"]
+
+    def create(self, validated_data):
+        sensor = validated_data.pop('sensor')
+        print(sensor)
+        if isinstance(sensor, Sensor):
+            print("creating with object")
+            sensor_val_obj = SensorValue.objects.create(**validated_data, sensor=sensor)
+        else:
+            print("creating with uuid")
+            sensor_obj = Sensor.objects.get(pk=sensor)
+            sensor_val_obj = SensorValue.objects.create(**validated_data, sensor=sensor_obj)
+        
+        return sensor_val_obj

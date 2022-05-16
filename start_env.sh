@@ -1,3 +1,3 @@
-export AUTH_TOKEN=6503b200bc75b126d8ee0b91e25ef3bab9647bba
+export AUTH_TOKEN=68866c04e9fee503b9ee35a48479506360941446
 
 source venv/bin/activate

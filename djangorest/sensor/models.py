@@ -14,7 +14,7 @@ class Sensor(models.Model):
     kind = models.ForeignKey(SensorType, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, unique=True)
     unit = models.CharField(max_length=15)
-    uuid = models.CharField(max_length=50, unique=True)
+    uuid = models.CharField(max_length=50, primary_key=True)
 
     def __str__(self):
         return f"{self.name} | {self.kind} ({self.unit})"
