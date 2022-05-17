@@ -22,7 +22,6 @@ from sensor import views
 router = routers.DefaultRouter()
 router.register(r'sensors', views.SensorViewSet)
 router.register(r'sensortypes', views.SensorTypeViewSet)
-router.register(r'sensorvalues', views.SensorValueViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +31,6 @@ urlpatterns = [
         title="IOT Rest Framework",
         description="API for connecting household IOT devices and tracking data",
         version="1.0.0"
-    ), name='openapi-schema')
+    ), name='openapi-schema'),
+    path('sensorvalues/', views.SensorValueViewSet.as_view(), name="sensorvalues")
 ]
